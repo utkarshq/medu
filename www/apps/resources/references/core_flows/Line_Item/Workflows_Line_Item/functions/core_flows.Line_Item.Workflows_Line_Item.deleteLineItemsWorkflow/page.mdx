@@ -1,0 +1,20 @@
+---
+slug: /references/medusa-workflows/deleteLineItemsWorkflow
+sidebar_label: deleteLineItemsWorkflow
+---
+
+import { TypeList, WorkflowDiagram } from "docs-ui"
+
+# deleteLineItemsWorkflow - Medusa Core Workflows Reference
+
+This documentation provides a reference to the `deleteLineItemsWorkflow`. It belongs to the `@medusajs/medusa/core-flows` package.
+
+This workflow deletes line items from a cart.
+
+## Steps
+
+<WorkflowDiagram workflow={{"name":"deleteLineItemsWorkflow","steps":[{"type":"step","name":"deleteLineItemsStep","description":"This step deletes line items.","link":"../../../Steps_Line_Item/functions/core_flows.Line_Item.Steps_Line_Item.deleteLineItemsStep/page.mdx","depth":1}]}} />
+
+## Input
+
+<TypeList types={[{"name":"DeleteLineItemsWorkflowInput","type":"[DeleteLineItemsWorkflowInput](../../../../types/core_flows.DeleteLineItemsWorkflowInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"cart_id","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"ids","type":"`string`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="deleteLineItemsWorkflow"/>

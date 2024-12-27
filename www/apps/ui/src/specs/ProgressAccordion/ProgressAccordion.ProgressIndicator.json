@@ -1,0 +1,14 @@
+{
+  "description": "",
+  "methods": [],
+  "displayName": "ProgressAccordion.ProgressIndicator",
+  "props": {
+    "status": {
+      "required": true,
+      "tsType": {
+        "name": "ProgressStatus"
+      },
+      "description": "The current status."
+    }
+  }
+}

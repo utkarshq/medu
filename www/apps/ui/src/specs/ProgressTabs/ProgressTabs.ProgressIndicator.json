@@ -1,0 +1,17 @@
+{
+  "description": "",
+  "methods": [],
+  "displayName": "ProgressTabs.ProgressIndicator",
+  "props": {
+    "status": {
+      "required": false,
+      "tsType": {
+        "name": "ProgressStatus"
+      },
+      "description": "The current status."
+    }
+  },
+  "composes": [
+    "Omit"
+  ]
+}
