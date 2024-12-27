@@ -343,6 +343,45 @@ import {
 
       return { template, category }
     }
+  
+    private async createVariantPrices(
+      variantId: string,
+      priceConfig: VariantPricingConfig
+    ): Promise<void> {
+      const priceSet = await this.priceSetService.create({
+        variant_id: variantId
+      })
+
+      // Create base price
+      if (priceConfig.base_price) {
+        await this.priceService.create({
+          price_set_id: priceSet.id,
+          amount: priceConfig.base_price.amount,
+          currency_code: priceConfig.base_price.currency_code,
+          includes_tax: priceConfig.base_price.includes_tax
+        })
+      }
+
+      // Create quantity-based prices
+      if (priceConfig.quantity_prices) {
+        for (const qtyPrice of priceConfig.quantity_prices) {
+          await this.priceService.create({
+            price_set_id: priceSet.id,
+            amount: qtyPrice.amount,
+            min_quantity: qtyPrice.min_quantity,
+            max_quantity: qtyPrice.max_quantity
+          })
+        }
+      }
+
+      // Handle price list if specified
+      if (priceConfig.price_list_id) {
+        await this.priceListService.addPrices(
+          priceConfig.price_list_id,
+          [priceSet.id]
+        )
+      }
+    }
   }
   
   export default TemplateModuleService

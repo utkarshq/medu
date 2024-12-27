@@ -3,14 +3,15 @@ import { EntityManager } from "typeorm"
 import { MedusaError } from "@medusajs/utils"
 
 export default async (req: Request, res: Response) => {
+  const { id } = req.params
   const templateService = req.scope.resolve("templateModuleService")
   const manager: EntityManager = req.scope.resolve("manager")
 
-  const created = await manager.transaction(async (transactionManager) => {
+  const updated = await manager.transaction(async (transactionManager) => {
     return await templateService
       .withTransaction(transactionManager)
-      .createTemplate(req.body)
+      .updateTemplate(id, req.body)
   })
 
-  res.status(201).json({ template: created })
+  res.json({ template: updated })
 } 

@@ -38,17 +38,34 @@ export type TemplateFieldConfig = {
 
 export type VariantPricingStrategy = "static" | "option_based" | "dynamic"
 
-export type VariantConfig = {
-  options: TemplateOptionConfig[]
-  pricing_strategy: VariantPricingStrategy
-  base_price?: number
+export type VariantPricingConfig = {
+  strategy: VariantPricingStrategy
+  base_price?: {
+    amount: number
+    currency_code: string
+    includes_tax?: boolean
+  }
+  price_list_id?: string
   price_adjustments?: {
     [optionId: string]: {
       values: {
-        [value: string]: number
+        [value: string]: {
+          type: "fixed" | "percentage"
+          amount: number
+        }
       }
     }
   }
+  quantity_prices?: {
+    min_quantity: number
+    max_quantity?: number
+    amount: number
+  }[]
+}
+
+export type VariantConfig = {
+  options: TemplateOptionConfig[]
+  pricing: VariantPricingConfig
   variant_fields: TemplateFieldConfig[]
 }
 

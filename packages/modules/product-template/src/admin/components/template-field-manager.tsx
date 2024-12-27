@@ -15,6 +15,7 @@ import { PlusIcon, TrashIcon, InfoIcon } from "@medusajs/icons"
 import { TemplateFieldType } from "../../types"
 import ValidationRulesManager from "./validation-rules-manager"
 import { TemplateFieldTypeManager } from "./template-field-type-manager"
+import { ValidationRuleBuilder } from "./validation-rule-builder"
 
 const FieldTypeConfig = {
   static: {
@@ -100,6 +101,9 @@ const TemplateFieldManager = ({ fieldArrayName = "base_fields" }) => {
             fieldPath={`${fieldArrayName}.${index}`}
             fieldType={fieldType}
             valueType={valueType}
+          />
+          <ValidationRuleBuilder 
+            fieldPath={`${fieldArrayName}.${index}`}
           />
         </Card.Content>
       </Card>
